@@ -5,8 +5,8 @@ namespace Klimesf\Security;
 
 use Firebase\JWT\ExpiredException;
 use Klimesf\Security\JWT\IJsonWebTokenService;
-use Nette\Http\Request;
-use Nette\Http\Response;
+use Nette\Http\IRequest;
+use Nette\Http\IResponse;
 use Nette\Security\IIdentity;
 use Nette\Security\IUserStorage;
 use Nette\Utils\DateTime;
@@ -86,13 +86,13 @@ class JWTUserStorage implements IUserStorage
 	 * JWTUserStorage constructor.
 	 * @param string               $privateKey
 	 * @param string               $algorithm
-	 * @param Request              $request
-	 * @param Response             $response
+	 * @param IRequest             $request
+	 * @param IResponse            $response
 	 * @param IJsonWebTokenService $jsonWebTokenService
 	 * @param IIdentitySerializer  $identitySerializer
 	 */
-	public function __construct($privateKey, $algorithm, Request $request,
-								Response $response, IJsonWebTokenService $jsonWebTokenService,
+	public function __construct($privateKey, $algorithm, IRequest $request,
+								IResponse $response, IJsonWebTokenService $jsonWebTokenService,
 								IIdentitySerializer $identitySerializer)
 	{
 		$this->privateKey = $privateKey;
